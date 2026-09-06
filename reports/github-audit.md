@@ -12,23 +12,25 @@ Generated: 2026-09-06 (America/Lima)
 ## Detected repository and organization
 
 - Repository: `DataScienceResearchPeru/ai-community`.
-- Visibility: private. The DSRP AI Community description and 15 approved topics are configured.
+- Visibility: public. The DSRP AI Community description and 15 approved topics are configured.
 - Issues and Discussions are enabled.
 - Default branch: `feature/community-foundation`; `main` does not yet exist.
 - The pushed foundation commit is `5551e18` on `origin/feature/community-foundation`.
 - Organization: `DataScienceResearchPeru`, plan `free`, 106 public repositories and 6 private repositories.
-- Existing teams: `dsrp-github-team`, `community`, `mentors`, and `maintainers` (all closed). The three community teams have no repository permissions assigned yet.
+- Existing teams: `dsrp-github-team`, `community`, `mentors`, and `maintainers` (all closed).
+- Repository permissions: `mentors` has Triage and `maintainers` has Maintain. `community` has no additional repository permission because public contributors use forks and Pull Requests.
+- Main branch protection requires Pull Requests, one approval, resolved conversations, current required checks, and applies to administrators. Force pushes and deletions are disabled.
 - Related repositories include `AI_Curriculum`, `Semilleros-DSRP`, `Retos`, `GithubParticipantes`, `rules`, and many public learning repositories.
 
 ## Risks
 
-- GitHub's API rejects branch protection for this private repository on the Free plan. It must be public before protections for `main` can be applied.
-- Changing public visibility exposes all current and future repository content. Review the branch before making that change.
-- Making `main` the default branch requires first creating it from the reviewed foundation commit. The existing feature branch should be retained until the transition is confirmed.
+- Public repository content is visible to everyone; contributors must continue to avoid secrets, private data, and client data.
+- The protected branch requires an independent approving review, so at least one additional eligible reviewer should be available before routine merges.
+- The feature branch remains available for review and must not be deleted until the community confirms the transition.
 
 ## Recommendations and proposed actions
 
-1. Review the foundation branch, then create `main` from commit `5551e18` and set it as the default branch.
-2. Change the repository to public, add the approved description and topics, and enable Discussions.
-3. Assign repository permissions only after a separate review: community and mentors at Triage; maintainers at Maintain.
-4. Once public, recheck branch-protection availability and apply the reviewed rule for `main`.
+1. Obtain an independent review and merge Pull Request #1 once approved.
+2. Configure the recommended Discussions categories manually: Announcements, General, Ideas, Projects, Challenges, Help, Show and Tell, and AI News.
+3. Add mentors and maintainers deliberately through the onboarding workflow; do not add all public contributors to the organization.
+4. Revisit required checks whenever a workflow name changes.
