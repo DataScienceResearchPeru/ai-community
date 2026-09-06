@@ -1,0 +1,29 @@
+name: Validate pull request
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required community files
+        run: |
+          set -euo pipefail
+          for file in README.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md GOVERNANCE.md ROADMAP.md LICENSE; do test -f "$file"; done
+      - name: Check project READMEs
+        run: |
+          set -euo pipefail
+          for directory in projects/*/; do
+            [ "${directory}" = "projects/template/" ] || test -f "${directory}README.md"
+          done
+      - name: Detect simple accidental secrets
+        run: |
+          set -euo pipefail
+          ! git grep -nEi '(api[_-]?key|secret|token)\s*[:=]\s*["'"'][A-Za-z0-9_/-]{16,}' -- ':!*.example' ':!.github/workflows/*'

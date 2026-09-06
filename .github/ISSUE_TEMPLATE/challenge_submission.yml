@@ -1,0 +1,26 @@
+name: Challenge submission
+description: Share a completed challenge solution.
+title: "[Challenge submission]: "
+labels: [challenge-submission]
+body:
+  - type: input
+    id: challenge
+    attributes: { label: Challenge }
+    validations: { required: true }
+  - type: input
+    id: repository
+    attributes: { label: GitHub repository }
+    validations: { required: true }
+  - type: input
+    id: demo
+    attributes: { label: Demo }
+  - type: input
+    id: technologies
+    attributes: { label: Technologies }
+  - type: textarea
+    id: description
+    attributes: { label: Description }
+    validations: { required: true }
+  - type: textarea
+    id: learned
+    attributes: { label: What was learned }

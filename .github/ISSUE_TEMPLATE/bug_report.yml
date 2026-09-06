@@ -1,0 +1,19 @@
+name: Bug report
+description: Report a reproducible problem in this repository.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes: { label: What happened?, description: Describe the observed behavior. }
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes: { label: Steps to reproduce, placeholder: "1. ...\n2. ..." }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected behavior }
+  - type: input
+    id: environment
+    attributes: { label: Environment, placeholder: "OS, Python version, browser, etc." }

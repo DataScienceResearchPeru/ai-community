@@ -1,0 +1,22 @@
+name: Markdown check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Markdown files are non-empty and end in newline
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            test -s "$file"
+            test "$(tail -c 1 "$file" | wc -l)" -eq 1
+          done < <(find . -name '*.md' -not -path './.git/*' -print0)

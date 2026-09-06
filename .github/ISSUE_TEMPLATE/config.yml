@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Community discussions
+    url: https://github.com/DataScienceResearchPeru/ai-community/discussions
+    about: Ask questions, share ideas, and show your work in Discussions.

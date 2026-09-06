@@ -1,0 +1,19 @@
+name: Project structure
+
+on:
+  pull_request:
+    paths:
+      - 'projects/**'
+
+permissions:
+  contents: read
+
+jobs:
+  project-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require README in every project directory
+        run: |
+          set -euo pipefail
+          for directory in projects/*/; do test -f "${directory}README.md"; done
