@@ -2,8 +2,8 @@ name: Project structure
 
 on:
   pull_request:
-    paths:
-      - 'projects/**'
+  push:
+    branches: [main]
 
 permissions:
   contents: read

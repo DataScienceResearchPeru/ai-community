@@ -26,4 +26,4 @@ jobs:
       - name: Detect simple accidental secrets
         run: |
           set -euo pipefail
-          ! git grep -nEi '(api[_-]?key|secret|token)\s*[:=]\s*["'"'][A-Za-z0-9_/-]{16,}' -- ':!*.example' ':!.github/workflows/*'
+          ! git grep -nEi "(api[_-]?key|secret|token)\\s*[:=]\\s*[\"'][A-Za-z0-9_/-]{16,}" -- ':!*.example' ':!.github/workflows/*'

@@ -10,7 +10,11 @@ for team in "${TEAM_COMMUNITY:-community}" "${TEAM_MENTORS:-mentors}" "${TEAM_MA
   if gh api "orgs/$org/teams/$team" >/dev/null 2>&1; then
     echo "Team exists; no changes: $team"
   else
-    echo "Would create team: $team (closed)"
-    $dry_run || gh api --method POST "orgs/$org/teams" -f name="$team" -f privacy=closed >/dev/null
+    if $dry_run; then
+      echo "Would create team: $team (closed)"
+    else
+      echo "Creating team: $team (closed)"
+      gh api --method POST "orgs/$org/teams" -f name="$team" -f privacy=closed >/dev/null
+    fi
   fi
 done
